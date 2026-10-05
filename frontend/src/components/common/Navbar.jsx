@@ -213,57 +213,52 @@ export const Navbar = ({ onOpenConsultation }) => {
               </NavLink>
             </nav>
 
-            {/* Right: Actions & Mobile Hamburger */}
-            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            {/* Right: Desktop Actions & Mobile Menu Trigger */}
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 ml-auto">
               
-              {/* Admin Portal Indicator */}
-              <Link
-                to="/admin"
-                className={`hidden sm:inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border transition-all ${
-                  isScrolled
-                    ? 'border-slate-300 text-slate-800 hover:border-amber-500 hover:text-amber-600 bg-slate-100/80'
-                    : 'border-white/20 text-slate-200 hover:border-amber-400 hover:text-amber-400 bg-white/10'
-                }`}
-                title="Executive Admin Portal (PIN Protected)"
-              >
-                <span>Admin</span>
-                <span className="text-[11px]">🔒</span>
-              </Link>
+              {/* Desktop-only Actions (Strictly hidden below lg screen width) */}
+              <div className="hidden lg:flex items-center gap-2.5">
+                {/* Admin Portal Indicator */}
+                <Link
+                  to="/admin"
+                  className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border transition-all ${
+                    isScrolled
+                      ? 'border-slate-300 text-slate-800 hover:border-amber-500 hover:text-amber-600 bg-slate-100/80'
+                      : 'border-white/20 text-slate-200 hover:border-amber-400 hover:text-amber-400 bg-white/10'
+                  }`}
+                  title="Executive Admin Portal (PIN Protected)"
+                >
+                  <span>Admin</span>
+                  <span className="text-[11px]">🔒</span>
+                </Link>
 
-              {/* Primary Consultation Action Button */}
-              <button
-                type="button"
-                onClick={() => onOpenConsultation(null)}
-                className="btn-gold hidden sm:inline-flex text-xs md:text-sm py-2 px-4 md:py-2.5 md:px-5 shadow-md"
-              >
-                <span>Consultation</span>
-                <span className="ml-2 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs">
-                  ➔
-                </span>
-              </button>
+                {/* Primary Consultation Action Button */}
+                <button
+                  type="button"
+                  onClick={() => onOpenConsultation(null)}
+                  className="btn-gold text-xs py-2 px-4 shadow-md inline-flex items-center"
+                >
+                  <span>Consultation</span>
+                  <span className="ml-2 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs">
+                    ➔
+                  </span>
+                </button>
+              </div>
 
-              {/* Mobile Quick Consult Button for small screens */}
-              <button
-                type="button"
-                onClick={() => onOpenConsultation(null)}
-                className="sm:hidden touch-target px-3 py-1.5 rounded-full bg-amber-500 text-navy-950 font-bold text-xs shadow-sm"
-              >
-                Book
-              </button>
-
-              {/* Mobile Hamburger Button */}
+              {/* Mobile & Tablet Hamburger Menu Button (Always visible and pinned on mobile/tablet) */}
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(true)}
-                className={`lg:hidden touch-target p-2 rounded-xl transition-colors ${
+                className={`lg:hidden flex items-center gap-2 px-3 py-2 rounded-xl border font-bold text-xs tracking-wider transition-all shadow-sm active:scale-95 ${
                   isScrolled
-                    ? 'text-slate-900 hover:bg-slate-100'
-                    : 'text-white hover:bg-white/10'
+                    ? 'border-slate-300 bg-slate-100 text-slate-900 hover:bg-slate-200'
+                    : 'border-white/20 bg-white/10 text-white hover:bg-white/20'
                 }`}
                 aria-label="Open Navigation Menu"
                 aria-expanded={isMobileMenuOpen}
               >
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5 text-amber-400" />
+                <span className="uppercase font-extrabold text-[11px]">Menu</span>
               </button>
             </div>
 
@@ -273,7 +268,7 @@ export const Navbar = ({ onOpenConsultation }) => {
 
       {/* Premium Full-Height Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+        <div className="fixed inset-0 z-[100] lg:hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
           
           {/* Backdrop Blur Overlay */}
           <div
