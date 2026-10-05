@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Chart } from 'chart.js/auto';
+import { CheckCircle2, TrendingUp, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export const AccountingStatisticsSection = ({ onOpenConsultation }) => {
   const canvasRef = useRef(null);
@@ -11,21 +12,21 @@ export const AccountingStatisticsSection = ({ onOpenConsultation }) => {
     const chartInstance = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Budget', 'Saving', 'Analytic'],
+        labels: ['Tax Efficiency', 'Audit Adherence', 'ROC Timeliness'],
         datasets: [
           {
-            label: 'Element 1',
-            data: [135, 120, 100],
-            backgroundColor: '#16222d',
-            borderRadius: 4,
-            barPercentage: 0.6
+            label: 'Bharat Advisory SLA (%)',
+            data: [98.4, 99.8, 100.0],
+            backgroundColor: '#0a193d',
+            borderRadius: 6,
+            barPercentage: 0.55
           },
           {
-            label: 'Element 2',
-            data: [95, 90, 65],
-            backgroundColor: '#ecf0f4',
-            borderRadius: 4,
-            barPercentage: 0.6
+            label: 'Industry Average (%)',
+            data: [72.0, 78.5, 69.2],
+            backgroundColor: '#cbd5e1',
+            borderRadius: 6,
+            barPercentage: 0.55
           }
         ]
       },
@@ -35,21 +36,30 @@ export const AccountingStatisticsSection = ({ onOpenConsultation }) => {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#16222d',
+            backgroundColor: '#0f172a',
             titleFont: { size: 12, weight: 'bold' },
             bodyFont: { size: 11 },
             padding: 10,
-            cornerRadius: 4
+            cornerRadius: 6,
+            callbacks: {
+              label: (context) => ` ${context.dataset.label}: ${context.raw}%`
+            }
           }
         },
         scales: {
           y: {
             beginAtZero: true,
-            max: 150,
-            ticks: { stepSize: 30 }
+            max: 110,
+            ticks: {
+              stepSize: 25,
+              callback: (val) => `${val}%`,
+              font: { size: 11 }
+            },
+            grid: { color: '#f1f5f9' }
           },
           x: {
-            grid: { display: false }
+            grid: { display: false },
+            ticks: { font: { size: 11, weight: '600' } }
           }
         }
       }
@@ -61,114 +71,78 @@ export const AccountingStatisticsSection = ({ onOpenConsultation }) => {
   }, []);
 
   return (
-    <section className="py-24 bg-white border-b border-slate-200" id="why-us">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-white border-b border-slate-200" id="performance-metrics">
+      <div className="site-container">
         
-        {/* Top: Chart + Copy (matches 00:34 of video) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Top: Chart + Copy */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
           {/* Left: Dual Bar Chart */}
           <div className="lg:col-span-6">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xl">
-              <div className="flex justify-between items-center mb-6">
-                <h5 className="font-extrabold text-[#16222d] text-base sm:text-lg font-display m-0">
-                  Performance Overview
-                </h5>
-                <div className="flex gap-4 text-xs font-bold">
-                  <span className="flex items-center gap-1.5 text-[#16222d]">
-                    <span className="w-3 h-3 bg-[#16222d] inline-block rounded-xs"></span> Element 1
+            <div className="bg-slate-50 p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-card">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+                <div>
+                  <h3 className="font-extrabold text-navy-950 text-base sm:text-lg font-display m-0">
+                    Statutory SLA & Compliance Benchmarks
+                  </h3>
+                  <span className="text-xs text-slate-500">Comparative delivery benchmark across 2,400+ corporate filings</span>
+                </div>
+                <div className="flex flex-wrap gap-3 text-xs font-bold">
+                  <span className="flex items-center gap-1.5 text-navy-950">
+                    <span className="w-3 h-3 bg-brand-950 inline-block rounded-xs"></span> Bharat Advisory
                   </span>
                   <span className="flex items-center gap-1.5 text-slate-500">
-                    <span className="w-3 h-3 bg-[#ecf0f4] border border-slate-300 inline-block rounded-xs"></span> Element 2
+                    <span className="w-3 h-3 bg-slate-300 inline-block rounded-xs"></span> Standard Market
                   </span>
                 </div>
               </div>
-              <div className="h-[280px] w-full relative">
+              
+              <div className="h-[260px] sm:h-[300px] w-full relative">
                 <canvas ref={canvasRef}></canvas>
               </div>
             </div>
           </div>
 
-          {/* Right: Copy & 3 Gold Checkmark Bullets */}
+          {/* Right: Copy & Highlights */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-block bg-[#ecf0f4] text-[#16222d] font-bold text-xs uppercase tracking-wider px-4 py-1.5 rounded">
-              WHY CHOOSE US
+            <div className="inline-block bg-brand-50 text-brand-800 font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-brand-200">
+              AUDITED PERFORMANCE DATA
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#16222d] tracking-tight leading-tight font-display">
-              Amazing accounting statistics show the power of numbers.
+            <h2 className="fluid-h2 font-extrabold text-navy-950 tracking-tight leading-tight">
+              Institutional precision backed by verifiable compliance metrics.
             </h2>
 
-            <p className="text-base text-slate-600 leading-relaxed">
-              Our firm is built on a foundation of responsiveness. We understand that in a fast-paced business world, a timely answer is a competitive advantage.
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              We eliminate regulatory risk through algorithmic multi-state GST reconciliation, two-tier partner audits for all Income Tax assessments, and strict adherence to statutory ROC MCA timelines.
             </p>
 
-            <ul className="space-y-4 pt-2">
-              <li className="flex items-center gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#ecab23] flex items-center justify-center text-[#16222d] text-xs font-black flex-shrink-0 shadow-xs">
-                  ✓
-                </span>
-                <span className="font-bold text-[#16222d] text-sm sm:text-base">
-                  Social security and pension optimization
-                </span>
-              </li>
-
-              <li className="flex items-center gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#ecab23] flex items-center justify-center text-[#16222d] text-xs font-black flex-shrink-0 shadow-xs">
-                  ✓
-                </span>
-                <span className="font-bold text-[#16222d] text-sm sm:text-base">
-                  GST, TDS, and income tax filings
-                </span>
-              </li>
-
-              <li className="flex items-center gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#ecab23] flex items-center justify-center text-[#16222d] text-xs font-black flex-shrink-0 shadow-xs">
-                  ✓
-                </span>
-                <span className="font-bold text-[#16222d] text-sm sm:text-base">
-                  Tax deductions & exemptions guidance
-                </span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        {/* Bottom: 3 Static Feature Cards (matches 00:36 of video) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pt-6" id="portfolio">
-          
-          {/* Card 1: Market Research Box */}
-          <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-center min-h-[260px] group hover:border-amber-400">
-            <div className="text-amber-500 mb-4 group-hover:scale-110 transition-transform">
-              <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-              </svg>
+            <div className="space-y-3 pt-2">
+              <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+                <CheckCircle2 className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                <span><strong>99.8% On-Time Statutory Filings:</strong> Eliminating interest under Section 234A/B/C and GST late fees.</span>
+              </div>
+              <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+                <CheckCircle2 className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                <span><strong>94.2% Faceless Scrutiny Resolution:</strong> Robust technical submissions before ITAT and National Faceless Assessment Centres.</span>
+              </div>
+              <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+                <CheckCircle2 className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                <span><strong>100% UDIN Verification:</strong> Guaranteed authenticity on all net-worth and turnover certifications.</span>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-[#16222d] font-display mb-2">
-              Market Research
-            </h3>
-            <p className="text-sm text-slate-500 m-0 leading-relaxed">
-              Businesses that partner with us gain a strategic advantage
-            </p>
-          </div>
 
-          {/* Card 2: Strategic Planning Image */}
-          <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 min-h-[260px] group">
-            <img
-              src="/images/demo-1/static-box/static-box-02.jpg"
-              alt="Strategic Planning"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={onOpenConsultation}
+                className="btn-primary text-xs sm:text-sm py-3 px-6 shadow-md"
+              >
+                <span>Request Case Assessment</span>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </button>
+            </div>
 
-          {/* Card 3: Financial Modeling Image */}
-          <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 min-h-[260px] group">
-            <img
-              src="/images/demo-1/static-box/static-box-03.jpg"
-              alt="Financial Modeling"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
           </div>
 
         </div>

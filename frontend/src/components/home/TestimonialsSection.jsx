@@ -4,15 +4,15 @@ import { Quote, Star, User } from 'lucide-react';
 
 export const TestimonialsSection = () => {
   return (
-    <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200" id="testimonials">
+      <div className="site-container">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold text-brand-700 uppercase tracking-wider bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
-            Client Experience
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="text-xs font-bold text-brand-700 uppercase tracking-wider bg-brand-50 px-3.5 py-1.5 rounded-full border border-brand-200">
+            CLIENT EXPERIENCE
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-950 mt-3 tracking-tight">
+          <h2 className="fluid-h2 font-extrabold text-navy-950 mt-4 tracking-tight leading-tight">
             Client Feedback & Engagement Standards
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">

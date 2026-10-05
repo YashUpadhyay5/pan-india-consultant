@@ -45,44 +45,44 @@ export const ServicesPage = () => {
       />
 
       {/* Hero Banner */}
-      <section className="bg-navy-950 text-white py-14 border-b border-navy-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-navy-950 text-white py-16 sm:py-20 border-b border-navy-900">
+        <div className="site-container">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider block mb-2">
-              National Consulting Practice Directory
+            <span className="text-xs font-bold text-amber-400 uppercase tracking-wider block mb-3">
+              NATIONAL PRACTICE DIRECTORY
             </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            <h1 className="fluid-h1 font-extrabold tracking-tight">
               Corporate Law, Taxation & Business Advisory Services
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
-              Explore our full spectrum of statutory filings, tax optimizations, and strategic governance solutions with transparent baseline pricing.
+            <p className="text-sm sm:text-base text-slate-300 mt-4 leading-relaxed">
+              Explore our full spectrum of statutory filings, tax optimizations, and strategic governance solutions with transparent baseline pricing across India.
             </p>
           </div>
         </div>
       </section>
 
       {/* Main Filter & Catalog Section */}
-      <section className="py-12 bg-slate-50 min-h-[60vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-14 sm:py-20 bg-slate-50 min-h-[60vh]">
+        <div className="site-container">
           
           {/* Controls Bar */}
-          <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
             
             {/* Search Box */}
             <div className="relative w-full md:w-80">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search services (e.g. GST, ITR, Incorporation)..."
-                className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:border-amber-500 focus:ring-0"
               />
             </div>
 
             {/* Results count */}
-            <div className="text-xs text-slate-500 font-medium">
-              Showing <strong className="text-navy-950">{filteredServices.length}</strong> available consulting services
+            <div className="text-xs sm:text-sm text-slate-500 font-medium">
+              Showing <strong className="text-navy-950">{filteredServices.length}</strong> available consulting practices
             </div>
           </div>
 
@@ -92,10 +92,10 @@ export const ServicesPage = () => {
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors border ${
+                className={`touch-target px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-colors border ${
                   selectedCategory === cat.id
-                    ? 'bg-navy-900 text-white border-navy-900 shadow-sm'
-                    : 'bg-white text-slate-700 hover:text-navy-900 border-slate-200 hover:border-slate-300'
+                    ? 'bg-navy-950 text-white border-navy-950 shadow-sm'
+                    : 'bg-white text-slate-700 hover:text-navy-950 border-slate-200 hover:border-slate-300'
                 }`}
               >
                 {cat.label}
@@ -106,19 +106,20 @@ export const ServicesPage = () => {
           {/* Grid */}
           {filteredServices.length === 0 ? (
             <div className="bg-white p-12 rounded-2xl border border-slate-200 text-center space-y-4">
-              <p className="text-sm font-bold text-navy-950">No matching services found</p>
-              <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                Try searching for a different keyword or view all services across our practice areas.
+              <p className="text-base font-bold text-navy-950">No matching services found</p>
+              <p className="text-xs sm:text-sm text-slate-500 max-w-sm mx-auto">
+                Try searching for a different keyword or reset filters to view all services across our practice areas.
               </p>
               <button
+                type="button"
                 onClick={() => { setSelectedCategory('all'); setSearchQuery(''); }}
-                className="btn-primary text-xs py-2 px-4"
+                className="btn-primary text-xs py-2 px-5"
               >
                 Reset All Filters
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredServices.map((service) => (
                 <ServiceCard
                   key={service.id}
@@ -130,11 +131,11 @@ export const ServicesPage = () => {
           )}
 
           {/* Pricing Disclaimer */}
-          <div className="mt-12 p-4 rounded-xl bg-white border border-slate-200 flex items-start space-x-3 text-xs text-slate-600">
-            <Info className="w-4 h-4 text-brand-600 flex-shrink-0 mt-0.5" />
+          <div className="mt-12 p-5 rounded-2xl bg-white border border-slate-200 flex items-start gap-3.5 text-xs text-slate-600 shadow-sm">
+            <Info className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
             <div>
-              <strong className="text-slate-900 block">Baseline Fee Terms:</strong>
-              <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
+              <strong className="text-navy-950 block text-xs sm:text-sm">Baseline Fee Terms:</strong>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
                 Prices mentioned are baseline starting fees. Final quotes depend on transaction volume, complexity, and scope of work. All engagements are confirmed with formal written scope documents.
               </p>
             </div>

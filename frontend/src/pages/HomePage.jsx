@@ -70,8 +70,8 @@ export const HomePage = () => {
       <ConsultationCTASection onOpenConsultation={() => openConsultation(null)} />
 
       {/* 14. Contact & Direct Lead Form Section */}
-      <section id="contact-section" className="py-20 bg-slate-100 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="contact-section" className="py-16 sm:py-24 bg-slate-100 border-t border-slate-200">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* Left Contact Details */}

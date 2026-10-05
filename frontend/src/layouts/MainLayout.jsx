@@ -24,15 +24,15 @@ export const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 font-sans text-slate-900">
       
-      {/* Main Sticky Navbar (Top-0) */}
+      {/* Main Sticky Navbar */}
       <Navbar onOpenConsultation={() => handleOpenConsultation(null)} />
 
-      {/* Main Page Outlet */}
-      <main className="flex-grow">
+      {/* Main Page Outlet with safe mobile bottom clearance for MobileBottomBar */}
+      <main className="flex-grow pb-16 lg:pb-0">
         <Outlet context={{ openConsultation: handleOpenConsultation }} />
       </main>
 
-      {/* Footer */}
+      {/* Global Footer */}
       <Footer />
 
       {/* Floating Elements */}

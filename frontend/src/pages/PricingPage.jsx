@@ -33,16 +33,16 @@ export const PricingPage = () => {
       />
 
       {/* Hero Banner */}
-      <section className="bg-navy-950 text-white py-14 border-b border-navy-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-navy-950 text-white py-16 sm:py-20 border-b border-navy-900">
+        <div className="site-container">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider block mb-2">
-              Transparent Fee Framework
+            <span className="text-xs font-bold text-amber-400 uppercase tracking-wider block mb-3">
+              TRANSPARENT FEE DIRECTORY
             </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              Indicative Pricing & Retainer Directory
+            <h1 className="fluid-h1 font-extrabold tracking-tight">
+              Indicative Pricing & Retainer Schedule
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300 mt-4 leading-relaxed">
               We eliminate unexpected consulting bills. Inspect our verified baseline starting fees across core practice disciplines and industry-specific operational packages.
             </p>
           </div>
@@ -50,12 +50,17 @@ export const PricingPage = () => {
       </section>
 
       {/* Retainer Tiers Section */}
-      <section className="py-14 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+        <div className="site-container">
           
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-2xl font-bold text-navy-950">Annual & Monthly Retainer Packages</h2>
-            <p className="text-xs text-slate-500 mt-1">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <span className="text-xs font-bold text-brand-700 uppercase tracking-wider bg-brand-50 px-3.5 py-1.5 rounded-full border border-brand-200">
+              ALL-INCLUSIVE PACKAGES
+            </span>
+            <h2 className="fluid-h2 font-extrabold text-navy-950 mt-4 tracking-tight leading-tight">
+              Annual & Monthly Retainer Packages
+            </h2>
+            <p className="text-xs sm:text-base text-slate-500 mt-2.5">
               All-inclusive statutory compliance retainers with dedicated advisory oversight.
             </p>
           </div>
@@ -64,34 +69,34 @@ export const PricingPage = () => {
             {pricingTiers.map((tier) => (
               <div
                 key={tier.id}
-                className={`rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all ${
+                className={`rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all ${
                   tier.highlight
-                    ? 'bg-navy-950 text-white shadow-xl border-2 border-amber-500'
-                    : 'bg-slate-50 text-slate-900 border border-slate-200 shadow-sm'
+                    ? 'bg-navy-950 text-white shadow-2xl border-2 border-amber-500 transform lg:-translate-y-2'
+                    : 'bg-slate-50 text-slate-900 border border-slate-200 shadow-card hover:shadow-card-hover'
                 }`}
               >
                 <div>
-                  <h3 className={`text-lg font-bold ${tier.highlight ? 'text-white' : 'text-navy-950'}`}>
+                  <h3 className={`text-lg sm:text-xl font-bold font-display ${tier.highlight ? 'text-white' : 'text-navy-950'}`}>
                     {tier.name}
                   </h3>
-                  <p className={`text-xs mt-1 ${tier.highlight ? 'text-amber-300' : 'text-slate-500'}`}>
+                  <p className={`text-xs mt-1.5 ${tier.highlight ? 'text-amber-300' : 'text-slate-500'}`}>
                     {tier.bestFor}
                   </p>
 
-                  <div className="py-4 my-4 border-y border-slate-200/40">
-                    <span className="text-xs text-slate-400 block">Baseline Retainer</span>
-                    <span className={`text-3xl font-black ${tier.highlight ? 'text-white' : 'text-navy-950'}`}>
+                  <div className="py-4 my-5 border-y border-slate-200/40">
+                    <span className="text-xs text-slate-400 block font-medium">Baseline Retainer</span>
+                    <span className={`text-3xl sm:text-4xl font-black font-display ${tier.highlight ? 'text-white' : 'text-navy-950'}`}>
                       {tier.startingFee}
                     </span>
-                    <span className={`text-xs block mt-1 ${tier.highlight ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <span className={`text-xs block mt-1 ${tier.highlight ? 'text-slate-300' : 'text-slate-500'}`}>
                       {tier.billingCycle}
                     </span>
                   </div>
 
-                  <ul className="space-y-2.5 mb-8">
+                  <ul className="space-y-3 mb-8">
                     {tier.features.map((f, i) => (
-                      <li key={i} className="flex items-start text-xs">
-                        <Check className={`w-4 h-4 mr-2 flex-shrink-0 mt-0.5 ${
+                      <li key={i} className="flex items-start text-xs sm:text-sm">
+                        <Check className={`w-4 h-4 mr-2.5 flex-shrink-0 mt-0.5 ${
                           tier.highlight ? 'text-amber-400' : 'text-emerald-600'
                         }`} />
                         <span className={tier.highlight ? 'text-slate-200' : 'text-slate-700'}>{f}</span>
@@ -101,9 +106,10 @@ export const PricingPage = () => {
                 </div>
 
                 <button
+                  type="button"
                   onClick={() => openConsultation(null)}
-                  className={`w-full py-3 rounded-lg text-xs font-bold ${
-                    tier.highlight ? 'bg-amber-500 hover:bg-amber-400 text-navy-950' : 'btn-primary'
+                  className={`w-full touch-target py-3.5 rounded-xl text-xs sm:text-sm font-bold shadow-sm transition-all ${
+                    tier.highlight ? 'bg-amber-500 hover:bg-amber-400 text-navy-950 font-extrabold shadow-md' : 'btn-primary'
                   }`}
                 >
                   {tier.ctaText}
@@ -116,41 +122,43 @@ export const PricingPage = () => {
       </section>
 
       {/* Main Fee Directory Switcher: Core vs Sector */}
-      <section className="py-14 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="site-container">
           
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            <h2 className="text-2xl font-bold text-navy-950">Statutory & Specialized Fee Matrix</h2>
-            <p className="text-xs text-slate-500 mt-1">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="fluid-h2 font-extrabold text-navy-950 tracking-tight leading-tight">
+              Statutory & Specialized Fee Matrix
+            </h2>
+            <p className="text-xs sm:text-base text-slate-500 mt-2">
               Explore service-wise pricing for standalone filings or specialized sector packages.
             </p>
 
             {/* Top View Mode Switcher */}
-            <div className="inline-flex p-1 rounded-xl bg-slate-200/80 mt-4 border border-slate-300/80">
+            <div className="inline-flex p-1.5 rounded-2xl bg-slate-200 mt-6 border border-slate-300">
               <button
                 type="button"
                 onClick={() => setViewTab('core')}
-                className={`flex items-center space-x-2 px-5 py-2 rounded-lg text-xs font-bold transition-all ${
+                className={`touch-target flex items-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                   viewTab === 'core'
-                    ? 'bg-navy-900 text-white shadow-sm'
-                    : 'text-slate-700 hover:text-navy-900'
+                    ? 'bg-navy-950 text-white shadow-sm'
+                    : 'text-slate-700 hover:text-navy-950'
                 }`}
               >
-                <Layers className="w-3.5 h-3.5" />
-                <span>Core Practice Directory (25 Services)</span>
+                <Layers className="w-4 h-4" />
+                <span>Core Directory (20+ Services)</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setViewTab('sector')}
-                className={`flex items-center space-x-2 px-5 py-2 rounded-lg text-xs font-bold transition-all ${
+                className={`touch-target flex items-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                   viewTab === 'sector'
-                    ? 'bg-navy-900 text-white shadow-sm'
-                    : 'text-slate-700 hover:text-navy-900'
+                    ? 'bg-navy-950 text-white shadow-sm'
+                    : 'text-slate-700 hover:text-navy-950'
                 }`}
               >
-                <Building2 className="w-3.5 h-3.5" />
-                <span>Industry Sector Packages (5 Verticals)</span>
+                <Building2 className="w-4 h-4" />
+                <span>Sector Packages (5 Verticals)</span>
               </button>
             </div>
           </div>
@@ -159,17 +167,17 @@ export const PricingPage = () => {
           {viewTab === 'core' && (
             <div>
               {/* Controls */}
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
                 {/* Category Filter Pills */}
                 <div className="flex items-center overflow-x-auto pb-2 gap-2 no-scrollbar w-full md:w-auto">
                   {serviceCategories.map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setActiveCategory(cat.id)}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors border ${
+                      className={`touch-target px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-colors border ${
                         activeCategory === cat.id
-                          ? 'bg-navy-900 text-white border-navy-900 shadow-xs'
-                          : 'bg-white text-slate-700 hover:text-navy-900 border-slate-200'
+                          ? 'bg-navy-950 text-white border-navy-950 shadow-sm'
+                          : 'bg-white text-slate-700 hover:text-navy-950 border-slate-200'
                       }`}
                     >
                       {cat.label}
@@ -178,49 +186,50 @@ export const PricingPage = () => {
                 </div>
 
                 {/* Search */}
-                <div className="relative w-full md:w-72">
-                  <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <div className="relative w-full md:w-80">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search practice services..."
-                    className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-slate-300 text-xs bg-white"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm bg-white focus:border-amber-500"
                   />
                 </div>
               </div>
 
               {/* Desktop Table View */}
               <div className="hidden md:block bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-8">
-                <table className="w-full text-left border-collapse text-xs">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
-                    <tr className="bg-navy-900 text-white border-b border-navy-800">
-                      <th className="py-3.5 px-6 font-bold uppercase tracking-wider text-[11px]">Service Name</th>
-                      <th className="py-3.5 px-6 font-bold uppercase tracking-wider text-[11px]">Scope of Work</th>
-                      <th className="py-3.5 px-5 font-bold uppercase tracking-wider text-[11px]">Indicative Pricing (INR)</th>
-                      <th className="py-3.5 px-6 font-bold uppercase tracking-wider text-[11px] text-right">Action</th>
+                    <tr className="bg-navy-950 text-white border-b border-navy-900">
+                      <th className="py-4 px-6 font-bold uppercase tracking-wider text-xs">Service Name</th>
+                      <th className="py-4 px-6 font-bold uppercase tracking-wider text-xs">Scope of Work</th>
+                      <th className="py-4 px-5 font-bold uppercase tracking-wider text-xs">Indicative Starting Fee</th>
+                      <th className="py-4 px-6 font-bold uppercase tracking-wider text-xs text-right">Action</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {filteredCoreServices.map((s) => (
                       <tr key={s.id} className="hover:bg-slate-50 transition-colors">
                         <td className="py-4 px-6 font-bold text-navy-950 align-top">
-                          <Link to={`/services/${s.slug}`} className="hover:text-brand-700">
+                          <Link to={`/services/${s.slug}`} className="hover:text-amber-600 font-display">
                             {s.title}
                           </Link>
-                          <span className="block text-[10px] font-semibold text-brand-700 mt-0.5">{s.categoryLabel}</span>
+                          <span className="block text-[11px] font-semibold text-brand-700 mt-1">{s.categoryLabel}</span>
                         </td>
                         <td className="py-4 px-6 text-slate-600 align-top max-w-sm">
-                          <p className="leading-relaxed">{s.scopeOfWork || s.shortDescription}</p>
+                          <p className="leading-relaxed text-xs">{s.scopeOfWork || s.shortDescription}</p>
                         </td>
                         <td className="py-4 px-5 align-top whitespace-nowrap">
-                          <span className="font-extrabold text-navy-900 text-sm">{s.priceDisplay}</span>
-                          <span className="block text-[10px] text-slate-400">{s.priceType}</span>
+                          <span className="font-extrabold text-navy-950 text-sm sm:text-base">{s.priceDisplay}</span>
+                          <span className="block text-[11px] text-slate-400">{s.priceType}</span>
                         </td>
                         <td className="py-4 px-6 align-top text-right whitespace-nowrap">
                           <button
+                            type="button"
                             onClick={() => openConsultation(s.id)}
-                            className="btn-primary text-xs py-1.5 px-3"
+                            className="btn-primary text-xs py-2 px-4"
                           >
                             {s.ctaType === 'quote' ? 'Request Quote' : 'Book Consultation'}
                           </button>
@@ -234,16 +243,16 @@ export const PricingPage = () => {
               {/* Mobile Stacked Cards View */}
               <div className="md:hidden space-y-4 mb-8">
                 {filteredCoreServices.map((s) => (
-                  <div key={s.id} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                  <div key={s.id} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                     <div className="flex items-start justify-between">
                       <div>
                         <span className="text-[10px] font-bold text-brand-700 uppercase">{s.categoryLabel}</span>
-                        <h4 className="text-sm font-bold text-navy-950 mt-0.5">
+                        <h4 className="text-sm sm:text-base font-bold text-navy-950 mt-0.5 font-display">
                           <Link to={`/services/${s.slug}`}>{s.title}</Link>
                         </h4>
                       </div>
                       <div className="text-right">
-                        <span className="text-xs font-black text-navy-900 block">{s.priceDisplay}</span>
+                        <span className="text-sm font-black text-navy-950 block">{s.priceDisplay}</span>
                         <span className="text-[10px] text-slate-400">{s.priceType}</span>
                       </div>
                     </div>
@@ -252,13 +261,14 @@ export const PricingPage = () => {
                       {s.scopeOfWork || s.shortDescription}
                     </p>
 
-                    <div className="pt-2 flex items-center justify-between border-t border-slate-100">
-                      <Link to={`/services/${s.slug}`} className="text-xs font-semibold text-brand-700">
+                    <div className="pt-3 flex items-center justify-between border-t border-slate-100">
+                      <Link to={`/services/${s.slug}`} className="text-xs font-bold text-brand-700">
                         View Details →
                       </Link>
                       <button
+                        type="button"
                         onClick={() => openConsultation(s.id)}
-                        className="btn-primary text-xs py-1.5 px-3"
+                        className="touch-target btn-primary text-xs py-2 px-4"
                       >
                         Consult
                       </button>
@@ -278,10 +288,10 @@ export const PricingPage = () => {
                   <button
                     key={ind.id}
                     onClick={() => setActiveSector(ind.id)}
-                    className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors border ${
+                    className={`touch-target px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-colors border ${
                       activeSector === ind.id
-                        ? 'bg-navy-900 text-white border-navy-900 shadow-sm'
-                        : 'bg-white text-slate-700 hover:text-navy-900 border-slate-200'
+                        ? 'bg-navy-950 text-white border-navy-950 shadow-sm'
+                        : 'bg-white text-slate-700 hover:text-navy-950 border-slate-200'
                     }`}
                   >
                     {ind.title}
@@ -290,18 +300,18 @@ export const PricingPage = () => {
               </div>
 
               {/* Selected Sector Box */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+              <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-card space-y-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
                   <div>
-                    <span className="text-[10px] font-bold text-amber-600 uppercase tracking-widest block mb-1">
+                    <span className="text-[11px] font-bold text-amber-600 uppercase tracking-widest block mb-1">
                       Sector Practice Package
                     </span>
-                    <h3 className="text-xl font-bold text-navy-950">{selectedIndustry.title}</h3>
-                    <p className="text-xs text-slate-500 mt-1 max-w-2xl">{selectedIndustry.targetDescription}</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-navy-950 font-display">{selectedIndustry.title}</h3>
+                    <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-2xl">{selectedIndustry.targetDescription}</p>
                   </div>
                   <Link
                     to={`/industries/${selectedIndustry.slug}`}
-                    className="btn-secondary text-xs py-2 px-4 whitespace-nowrap"
+                    className="btn-secondary text-xs sm:text-sm py-2 px-4 whitespace-nowrap"
                   >
                     View Sector Practice Page →
                   </Link>
@@ -309,13 +319,13 @@ export const PricingPage = () => {
 
                 {/* Desktop Table */}
                 <div className="hidden sm:block overflow-hidden rounded-xl border border-slate-200">
-                  <table className="w-full text-left border-collapse text-xs">
+                  <table className="w-full text-left border-collapse text-xs sm:text-sm">
                     <thead>
                       <tr className="bg-slate-100 text-slate-800 border-b border-slate-200">
-                        <th className="py-3 px-4 font-bold uppercase tracking-wider text-[11px]">Service Name</th>
-                        <th className="py-3 px-4 font-bold uppercase tracking-wider text-[11px]">Scope of Work</th>
-                        <th className="py-3 px-4 font-bold uppercase tracking-wider text-[11px]">Indicative Fee (INR)</th>
-                        <th className="py-3 px-4 font-bold uppercase tracking-wider text-[11px] text-right">Consultation</th>
+                        <th className="py-3.5 px-4 font-bold uppercase tracking-wider text-xs">Service Name</th>
+                        <th className="py-3.5 px-4 font-bold uppercase tracking-wider text-xs">Scope of Work</th>
+                        <th className="py-3.5 px-4 font-bold uppercase tracking-wider text-xs">Indicative Fee</th>
+                        <th className="py-3.5 px-4 font-bold uppercase tracking-wider text-xs text-right">Consultation</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
@@ -332,8 +342,9 @@ export const PricingPage = () => {
                           </td>
                           <td className="py-3.5 px-4 align-top text-right whitespace-nowrap">
                             <button
+                              type="button"
                               onClick={() => openConsultation(null)}
-                              className="btn-primary text-xs py-1 px-3"
+                              className="btn-primary text-xs py-1.5 px-3.5"
                             >
                               Inquire
                             </button>
@@ -355,8 +366,9 @@ export const PricingPage = () => {
                       <p className="text-[11px] text-slate-600 leading-relaxed">{item.scope}</p>
                       <div className="pt-2 text-right">
                         <button
+                          type="button"
                           onClick={() => openConsultation(null)}
-                          className="btn-primary text-[11px] py-1 px-3"
+                          className="touch-target btn-primary text-xs py-1.5 px-3.5"
                         >
                           Book Service
                         </button>
@@ -370,10 +382,10 @@ export const PricingPage = () => {
 
           {/* Pricing Disclaimer */}
           <div className="mt-12 p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-start space-x-3 text-xs text-slate-600 max-w-4xl mx-auto">
-            <Info className="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" />
+            <Info className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <strong className="text-slate-900 block">Mandatory Pricing Disclaimer:</strong>
-              <p className="text-[11px] text-slate-500 leading-relaxed">
+              <strong className="text-navy-950 block text-xs sm:text-sm">Mandatory Pricing Disclaimer:</strong>
+              <p className="text-xs text-slate-500 leading-relaxed">
                 Prices mentioned are baseline starting fees. Final quotes depend on transaction volume, complexity, and scope of work. Government statutory fees (MCA challans, GST portal fees, Stamp Duty, Trademark registry fees) are charged at actuals as per government receipts.
               </p>
             </div>

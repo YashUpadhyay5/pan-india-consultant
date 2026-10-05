@@ -21,7 +21,7 @@ export const ConsultationCTASection = ({ onOpenConsultation }) => {
       {/* Subtle Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="site-container relative z-10">
         <div className="bg-gradient-to-r from-navy-900 to-slate-900 rounded-3xl p-8 sm:p-12 lg:p-16 border border-navy-800 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
