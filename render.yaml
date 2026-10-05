@@ -1,0 +1,52 @@
+services:
+  # ----------------------------------------------------
+  # 1. Backend REST API Web Service
+  # ----------------------------------------------------
+  - type: web
+    name: pan-india-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        value: "*"
+      - key: SUPABASE_URL
+        value: https://vlmymxxztiyrnzcqurbc.supabase.co
+      - key: SUPABASE_KEY
+        value: sb_publishable_26xLgjdjJFUi64iPb7jYXw_LD9cj86q
+
+  # ----------------------------------------------------
+  # 2. Frontend React Single-Page Application (Static Site)
+  # ----------------------------------------------------
+  - type: static
+    name: pan-india-frontend
+    rootDir: frontend
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_COMPANY_NAME
+        value: Bharat Advisory Partners
+      - key: VITE_COMPANY_LEGAL_NAME
+        value: Bharat Advisory Partners LLP
+      - key: VITE_SUPPORT_PHONE
+        value: "+917668976193"
+      - key: VITE_WHATSAPP_NUMBER
+        value: "917668976193"
+      - key: VITE_SUPPORT_EMAIL
+        value: advisory@bharatadvisory.in
+      - key: VITE_SUPABASE_URL
+        value: https://vlmymxxztiyrnzcqurbc.supabase.co
+      - key: VITE_SUPABASE_PUBLISHABLE_KEY
+        value: sb_publishable_26xLgjdjJFUi64iPb7jYXw_LD9cj86q

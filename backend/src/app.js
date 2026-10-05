@@ -12,9 +12,35 @@ const app = express();
 // Security Middlewares
 app.use(helmet());
 
-const clientOrigin = process.env.CLIENT_URL || 'http://localhost:3000';
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://127.0.0.1:3000'
+];
+
+if (process.env.CLIENT_URL) {
+  process.env.CLIENT_URL.split(',').forEach(url => {
+    const trimmed = url.trim();
+    if (trimmed && !allowedOrigins.includes(trimmed)) {
+      allowedOrigins.push(trimmed);
+    }
+  });
+}
+
 app.use(cors({
-  origin: [clientOrigin, 'http://localhost:5173', 'http://127.0.0.1:3000'],
+  origin: (origin, callback) => {
+    // Allow non-browser requests (e.g. mobile, curl, Postman, server-to-server)
+    if (!origin) return callback(null, true);
+    if (
+      process.env.CLIENT_URL === '*' ||
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.onrender.com') ||
+      origin.endsWith('.vercel.app')
+    ) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
