@@ -15,10 +15,10 @@ export const siteConfig = {
     { city: "Pune (Compliance Center)", address: "[Senapati Bapat Road / Viman Nagar, Pune 411016]" }
   ],
   contact: {
-    phone: "+91 98765 43210",
-    phoneRaw: "+919876543210",
+    phone: "+91 76689 76193",
+    phoneRaw: "+917668976193",
     email: "advisory@bharatadvisory.in",
-    whatsapp: "919876543210",
+    whatsapp: "917668976193",
     businessHours: "Monday – Saturday: 9:30 AM – 7:00 PM IST",
     responseTime: "Guaranteed response within 4 business hours"
   },
