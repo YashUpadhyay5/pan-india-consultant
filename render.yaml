@@ -1,3 +1,4 @@
+version: "1"
 services:
   # ----------------------------------------------------
   # 1. Backend REST API Web Service
@@ -7,7 +8,7 @@ services:
     runtime: node
     rootDir: backend
     plan: free
-    region: oregon
+    region: singapore
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /api/v1/health
@@ -24,11 +25,10 @@ services:
   # ----------------------------------------------------
   # 2. Frontend React Single-Page Application (Static Site)
   # ----------------------------------------------------
-  - type: static
+  - type: web
     name: pan-india-frontend
+    runtime: static
     rootDir: frontend
-    plan: free
-    region: oregon
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     routes:
